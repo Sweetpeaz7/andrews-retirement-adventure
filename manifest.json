@@ -1,29 +1,15 @@
 {
-2
-"name": "Andrew's Retirement Adventure Countdown",
-3
-"short_name": "Andrew",
-4
-"start_url": ".",
-5
-"display": "standalone",
-6
-"background_color": "#1b4332",
-7
-"theme_color": "#1b4332",
-8
-"icons": [
-9
-{
-10
-"src": "icon.png",
-11
-"sizes": "512x512",
-12
-"type": "image/png"
-13
-}
-14
-]
-15
+  "name": "Andrew's Retirement Adventure Countdown",
+  "short_name": "Andrew",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1b4332",
+  "theme_color": "#1b4332",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
