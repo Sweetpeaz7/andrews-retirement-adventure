@@ -34,6 +34,7 @@ const quotes = [
     "🎣 The fish don't know it's Tuesday.",
     "🏕️ The camper is waiting.",
     "🛶 Kayak adventures loading.",
+    "🚶 Bushwalking adventures await.",
     "🚴 Retirement means riding whenever you want.",
     "📚 Reading backlog detected.",
     "📖 Manga collection awaiting deployment.",
@@ -50,45 +51,51 @@ const quotes = [
 let currentPhoto = 0;
 
 function rotatePhotos() {
-    if (photos.length > 0) {
-        document.body.style.backgroundImage =
-            `url('${photos[currentPhoto]}')`;
 
-        currentPhoto++;
+    document.body.style.backgroundImage =
+        `url('${photos[currentPhoto]}')`;
 
-        if (currentPhoto >= photos.length) {
-            currentPhoto = 0;
-        }
+    currentPhoto++;
+
+    if (currentPhoto >= photos.length) {
+        currentPhoto = 0;
     }
 }
 
 rotatePhotos();
 setInterval(rotatePhotos, 20000);
 
-function getMilestone(days) {
+function getMilestone(daysRemaining) {
 
-    if (days <= 1)
-        return "🥳 One More Sleep";
+    if (daysRemaining <= 1) {
+        return "🥳 ONE MORE SLEEP";
+    }
 
-    if (days <= 7)
-        return "🚐 Adventure Mode Loading...";
+    if (daysRemaining <= 7) {
+        return "🚐 ADVENTURE MODE LOADING...";
+    }
 
-    if (days <= 30)
-        return "☕ Retirement Practice Mode";
+    if (daysRemaining <= 30) {
+        return "☕ RETIREMENT PRACTICE MODE";
+    }
 
-    if (days <= 50)
-        return "📺 Retirement Training: Couch Sitting Level Beginner";
+    if (daysRemaining <= 50) {
+        return "📺 COUCH SITTING LEVEL: BEGINNER";
+    }
 
-    if (days <= 100)
-        return "🏊 More pool days are coming";
+    if (daysRemaining <= 100) {
+        return "🏊 MORE POOL DAYS ARE COMING";
+    }
 
-    if (days <= 183)
+    if (daysRemaining <= 183) {
         return "🎉 HALF WAY THERE";
+    }
 
-    if (days <= 274)
-        return "🏕️ Final Quarter";
+    if (daysRemaining <= 274) {
+        return "🏕️ FINAL QUARTER";
+    }
 
-    return "🚙 The camper is packed and waiting";
+    return "🚙 THE CAMPER IS PACKED AND WAITING";
 }
 
 function updateCountdown() {
@@ -116,8 +123,9 @@ function updateCountdown() {
             🏍️ Motorbike Rides<br>
             🎨 Art<br>
             📚 Books<br>
-            📖 Manga<br>
+            📖 Comics & Manga<br>
             🎬 Sci‑Fi Movies<br>
+            🌏 Learning<br>
             🏕️ Camping<br>
             🚙 Road Trips
             </p>
@@ -131,148 +139,24 @@ function updateCountdown() {
 
     const diff = retirementDate - now;
 
-    const totalDays = Math.floor(
-        (retirementDate - startDate) /
-        (1000 * 60 * 60 * 24)
-    );
+    const totalDays =
+        Math.floor(
+            (retirementDate - startDate) /
+            (1000 * 60 * 60 * 24)
+        );
 
-    const remainingDays = Math.floor(
-        diff / (1000 * 60 * 60 * 24)
-    );
+    const remainingDays =
+        Math.floor(
+            diff /
+            (1000 * 60 * 60 * 24)
+        );
 
     const progress =
-        ((totalDays - remainingDays) / totalDays) * 100;
+        ((totalDays - remainingDays) /
+        totalDays) * 100;
 
     document.getElementById("bar").style.width =
         progress + "%";
 
     document.getElementById("percent").innerText =
         progress.toFixed(1) + "% Complete";
-
-    let seconds = Math.floor(diff / 1000);
-
-    const years = Math.floor(seconds / 31536000);
-    seconds %= 31536000;
-
-    const months = Math.floor(seconds / 2628000);
-    seconds %= 2628000;
-
-    const weeks = Math.floor(seconds / 604800);
-    seconds %= 604800;
-
-    const days = Math.floor(seconds / 86400);
-    seconds %= 86400;
-
-    const hours = Math.floor(seconds / 3600);
-    seconds %= 3600;
-
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-
-    document.getElementById("countdown").innerHTML = `
-        <div class="count-grid">
-
-            <div class="count-box">
-                <strong>${years}</strong>
-                Years
-            </div>
-
-            <div class="count-box">
-                <strong>${months}</strong>
-                Months
-            </div>
-
-            <div class="count-box">
-                <strong>${weeks}</strong>
-                Weeks
-            </div>
-
-            <div class="count-box">
-                <strong>${days}</strong>
-                Days
-            </div>
-
-            <div class="count-box">
-                <strong>${hours}</strong>
-                Hours
-            </div>
-
-            <div class="count-box">
-                <strong>${minutes}</strong>
-                Minutes
-            </div>
-
-            <div class="count-box">
-                <strong>${secs}</strong>
-                Seconds
-            </div>
-
-        </div>
-    `;
-
-    document.getElementById("quote").innerText =
-        quotes[new Date().getDate() % quotes.length];
-
-    document.getElementById("milestone").innerText =
-        getMilestone(remainingDays);
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-function startConfetti() {
-
-    const canvas =
-        document.getElementById("confetti");
-
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const pieces = [];
-
-    for (let i = 0; i < 150; i++) {
-        pieces.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 10 + 5,
-            speed: Math.random() * 5 + 1
-        });
-    }
-
-    function animate() {
-
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
-
-        pieces.forEach(p => {
-
-            ctx.fillStyle =
-                `hsl(${Math.random() * 360},100%,50%)`;
-
-            ctx.fillRect(
-                p.x,
-                p.y,
-                p.size,
-                p.size
-            );
-
-            p.y += p.speed;
-
-            if (p.y > canvas.height) {
-                p.y = -20;
-            }
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-}
