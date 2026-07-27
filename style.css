@@ -122,3 +122,15 @@ h1{
 body {
     overflow-x: hidden;
 }
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 3rem;
+        line-height: 1.1;
+        margin-bottom: 20px;
+    }
+
+}
+.count-box strong {
+    font-size: 3rem;
+}
