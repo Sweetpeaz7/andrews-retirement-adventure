@@ -1,7 +1,7 @@
 const retirementDate = new Date("2027-07-27T00:00:00");
 
 const photos = [];
-for(let i=1;i<=25;i++){
+for (let i = 1; i <= 25; i++) {
     photos.push(`images/photo${i}.jpg`);
 }
 
@@ -10,19 +10,24 @@ const quotes = [
     "🎣 The fish don't know it's Tuesday.",
     "🏕️ The camper is waiting.",
     "🛶 Kayak adventures loading.",
+    "🚶 Bushwalking adventures await.",
     "🚴 Retirement means riding whenever you want.",
     "📚 Reading backlog detected.",
+    "📖 Manga collection awaiting deployment.",
     "🎬 Sci‑Fi marathon loading.",
     "🌏 National Geographic mode activated.",
     "🍕 Midweek pizza is called retirement.",
     "🥞 Retirement weekends are every day.",
+    "🐨 More time to notice the little things.",
     "🦘 Adventure can start with a walk.",
+    "🛠️ Side projects unlocked.",
     "🎨 Creativity never retires."
 ];
 
 let currentPhoto = 0;
 
 function rotatePhotos() {
+
     document.body.style.backgroundImage =
         `url('${photos[currentPhoto]}')`;
 
@@ -33,7 +38,31 @@ function rotatePhotos() {
     }
 }
 
+function getMilestone(days) {
 
+    if (days <= 1)
+        return "🥳 ONE MORE SLEEP";
+
+    if (days <= 7)
+        return "🚐 ADVENTURE MODE LOADING...";
+
+    if (days <= 30)
+        return "☕ RETIREMENT PRACTICE MODE";
+
+    if (days <= 50)
+        return "📺 COUCH SITTING LEVEL: BEGINNER";
+
+    if (days <= 100)
+        return "🏊 MORE POOL DAYS ARE COMING";
+
+    if (days <= 183)
+        return "🎉 HALF WAY THERE";
+
+    if (days <= 274)
+        return "🏕️ FINAL QUARTER";
+
+    return "🚙 THE CAMPER IS WAITING";
+}
 
 function updateCountdown() {
 
@@ -41,15 +70,35 @@ function updateCountdown() {
 
     const diff = retirementDate - now;
 
-    if(diff <= 0){
+    if (diff <= 0) {
 
         document.body.style.backgroundImage =
             "url('images/burning-work-clothes.jpg')";
 
         document.querySelector(".overlay").innerHTML = `
             <h1>🎂 HAPPY 60TH BIRTHDAY DAD!</h1>
+
             <h2>⏰ Time To Clock Off For Good!</h2>
-            <h3>🏕️ Adventure Begins Now</h3>
+
+            <h3>🔥 Work Gear Retired</h3>
+
+            <p>
+            ☕ Coffee<br>
+            🎣 Fishing<br>
+            🛶 Kayaking<br>
+            🚶 Bushwalking<br>
+            🚴 Cycling<br>
+            🏍️ Motorbike Rides<br>
+            🎨 Art<br>
+            📚 Books<br>
+            📖 Comics & Manga<br>
+            🎬 Sci‑Fi Movies<br>
+            🌏 Learning<br>
+            🏕️ Camping<br>
+            🚙 Road Trips
+            </p>
+
+            <h2>🏕️ Adventure Begins Now</h2>
         `;
 
         return;
@@ -88,44 +137,19 @@ function updateCountdown() {
 
     document.getElementById("quote").innerText =
         quotes[new Date().getDate() % quotes.length];
-let milestone =
-    "🚙 The Camper Is Waiting";
 
-if (days <= 183)
-    milestone = "🎉 HALF WAY THERE";
+    document.getElementById("milestone").innerText =
+        getMilestone(days);
 
-if (days <= 100)
-    milestone = "🏊 More Pool Days Are Coming";
+    const totalDays = 365;
+    const progress =
+        ((totalDays - days) / totalDays) * 100;
 
-if (days <= 50)
-    milestone = "📺 Couch Sitting Level: Beginner";
+    document.getElementById("bar").style.width =
+        progress + "%";
 
-if (days <= 30)
-    milestone = "☕ Retirement Practice Mode";
-
-if (days <= 7)
-    milestone = "🚐 Adventure Mode Loading...";
-
-if (days <= 1)
-    milestone = "🥳 One More Sleep";
-
-document.getElementById("milestone").innerText =
-    milestone;
-
-const totalDays = 365;
-
-const progress =
-    ((totalDays - days) / totalDays) * 100;
-
-document.getElementById("percent").innerText =
-    progress.toFixed(1) + "% Complete";
-const totalDays = 365;
-
-const progress =
-    ((totalDays - days) / totalDays) * 100;
-
-document.getElementById("percent").innerText =
-    progress.toFixed(1) + "% Complete";
+    document.getElementById("percent").innerText =
+        progress.toFixed(1) + "% Complete";
 }
 
 window.addEventListener("load", function () {
