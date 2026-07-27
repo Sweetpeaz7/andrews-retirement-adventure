@@ -95,3 +95,30 @@ h1{
         font-size:1.5rem;
     }
 }
+@media screen and (max-width: 768px) {
+
+    .overlay {
+        width: 92%;
+        max-width: 92%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .count-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .count-box strong {
+        font-size: 2.2rem;
+    }
+
+    #quote {
+        font-size: 1.5rem;
+    }
+}
+body {
+    overflow-x: hidden;
+}
