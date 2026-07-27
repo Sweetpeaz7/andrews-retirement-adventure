@@ -33,8 +33,7 @@ function rotatePhotos() {
     }
 }
 
-rotatePhotos();
-setInterval(rotatePhotos, 20000);
+
 
 function updateCountdown() {
 
@@ -94,6 +93,12 @@ function updateCountdown() {
         "Retirement Adventure Loading...";
 }
 
-updateCountdown();
+window.addEventListener("load", function () {
 
-setInterval(updateCountdown, 1000);
+    rotatePhotos();
+    updateCountdown();
+
+    setInterval(rotatePhotos, 20000);
+    setInterval(updateCountdown, 1000);
+
+});
