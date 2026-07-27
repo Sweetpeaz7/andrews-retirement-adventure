@@ -88,9 +88,44 @@ function updateCountdown() {
 
     document.getElementById("quote").innerText =
         quotes[new Date().getDate() % quotes.length];
+let milestone =
+    "🚙 The Camper Is Waiting";
 
-    document.getElementById("percent").innerText =
-        "Retirement Adventure Loading...";
+if (days <= 183)
+    milestone = "🎉 HALF WAY THERE";
+
+if (days <= 100)
+    milestone = "🏊 More Pool Days Are Coming";
+
+if (days <= 50)
+    milestone = "📺 Couch Sitting Level: Beginner";
+
+if (days <= 30)
+    milestone = "☕ Retirement Practice Mode";
+
+if (days <= 7)
+    milestone = "🚐 Adventure Mode Loading...";
+
+if (days <= 1)
+    milestone = "🥳 One More Sleep";
+
+document.getElementById("milestone").innerText =
+    milestone;
+
+const totalDays = 365;
+
+const progress =
+    ((totalDays - days) / totalDays) * 100;
+
+document.getElementById("percent").innerText =
+    progress.toFixed(1) + "% Complete";
+const totalDays = 365;
+
+const progress =
+    ((totalDays - days) / totalDays) * 100;
+
+document.getElementById("percent").innerText =
+    progress.toFixed(1) + "% Complete";
 }
 
 window.addEventListener("load", function () {
