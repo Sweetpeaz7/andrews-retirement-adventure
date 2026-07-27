@@ -1,1 +1,29 @@
-{"name":"Andrew's Retirement Adventure Countdown","short_name":"Andrew","display":"standalone","start_url":"./"}
+{
+2
+"name": "Andrew's Retirement Adventure Countdown",
+3
+"short_name": "Andrew",
+4
+"start_url": ".",
+5
+"display": "standalone",
+6
+"background_color": "#1b4332",
+7
+"theme_color": "#1b4332",
+8
+"icons": [
+9
+{
+10
+"src": "icon.png",
+11
+"sizes": "512x512",
+12
+"type": "image/png"
+13
+}
+14
+]
+15
+}
