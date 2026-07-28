@@ -136,3 +136,13 @@ body {
 .count-box strong {
     font-size: 3rem;
 }
+@media (max-width: 768px) {
+
+    body {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: black;
+    }
+
+}
